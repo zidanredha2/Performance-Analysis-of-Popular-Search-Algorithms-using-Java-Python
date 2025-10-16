@@ -18,7 +18,7 @@ date: 2025-10-16
 ---
 
 # Summary
-This study presents a comparative performance analysis of widely used search algorithms—Linear Search, Binary Search, Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search—implemented in two popular programming languages: **Java** and **Python**.  
+This research presents a comparative performance analysis of widely used search algorithms—Linear Search, Binary Search, Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search—implemented in two popular programming languages: **Java** and **Python**.  
 The objective is to empirically evaluate the runtime behavior, scalability, and efficiency of these algorithms under identical experimental conditions. Results reveal that while Java generally outperforms Python in computation-intensive tasks due to Just-In-Time (JIT) optimizations, Python offers flexibility and ease of implementation for prototyping and smaller datasets.  
 The findings highlight that algorithmic performance depends not only on theoretical complexity but also on language-level execution models, memory management, and runtime characteristics.
 
