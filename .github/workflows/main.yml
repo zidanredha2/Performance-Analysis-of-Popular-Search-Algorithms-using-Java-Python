@@ -1,6 +1,5 @@
 name: Build and Upload Paper PDF
 
-# Trigger whenever paper.md changes
 on:
   push:
     paths:
@@ -14,19 +13,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pandoc texlive-xetex
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex
 
-    - name: Convert paper.md to PDF
-      run: pandoc paper/paper.md -o paper/paper.pdf
+      - name: Convert paper.md to PDF
+        run: pandoc paper/paper.md -o paper/paper.pdf
 
-    - name: Upload PDF as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: research-paper
-        path: paper/paper.pdf
+      - name: Upload PDF as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-paper
+          path: paper/paper.pdf
