@@ -13,18 +13,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # Step 1: Checkout the repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      # Step 2: Cache texlive packages to speed up build
+      - name: Cache TeX Live
+        uses: actions/cache@v3
+        with:
+          path: /usr/share/texlive
+          key: ${{ runner.os }}-texlive
+
+      # Step 3: Install dependencies
+      - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra
 
-      - name: Convert paper.md to PDF
-        run: pandoc paper/paper.md -o paper/paper.pdf
+      # Step 4: Convert Markdown to PDF with verbose output
+      - name: Generate PDF from paper.md
+        run: pandoc paper/paper.md -o paper/paper.pdf --verbose
 
-      - name: Upload PDF as artifact
+      # Step 5: Upload PDF as artifact
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: research-paper
