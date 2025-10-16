@@ -40,3 +40,18 @@ jobs:
         with:
           name: research-paper
           path: paper/paper.pdf
+
+  deploy-pages:
+    needs: build-pdf
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Copy PDF to docs folder
+        run: mkdir -p docs && cp paper/paper.pdf docs/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v7
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
