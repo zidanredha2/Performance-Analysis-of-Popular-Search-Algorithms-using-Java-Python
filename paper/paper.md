@@ -29,7 +29,7 @@ This research bridges the gap between **algorithmic theory** and **practical imp
 By releasing this study as open-source software, it supports reproducibility and future comparative studies in performance-critical computing.
 
 # Functionality
-The repository provides:
+The repository provides the following:
 - Implementations of Linear, Binary, DFS, BFS, and A* search algorithms in both Java and Python.  
 - Benchmarking scripts that measure execution time using `System.nanoTime()` (Java) and `time.perf_counter()` (Python).  
 - Dataset generators for numerical and graph-based inputs, scaling up to 500,000 nodes.  
