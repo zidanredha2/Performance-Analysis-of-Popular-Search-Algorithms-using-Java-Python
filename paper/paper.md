@@ -48,7 +48,7 @@ python {Algorithm directory}/{Algorithm Name} Python/{algorithm}.py
 
 2. Let IntelliJ automatically import dependencies from pom.xml.
 
-3. Build the project (⌘F9 on macOS or Ctrl+F9 on Windows/Linux).
+3. Build the project (Ctrl+F9 on Windows/Linux).
 
 4. Run the benchmarking class from src/main/java/com/example/search/{algorithm}.java.
 
