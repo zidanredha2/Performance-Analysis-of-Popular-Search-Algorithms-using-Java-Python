@@ -1,0 +1,112 @@
+📊 Performance Report: Linear Search in Python vs Java
+🔹 Introduction
+
+Linear search (or sequential search) is one of the simplest searching algorithms. It scans each element in a dataset until the target element is found (or the dataset ends). Although it has a time complexity of O(n), its actual runtime varies based on:
+
+The programming language used,
+
+The compiler or interpreter,
+
+The runtime environment (e.g., JIT compilation in Java), and
+
+Hardware specifications.
+
+This report compares the performance of linear search implemented in Python and Java on a dataset of 5000 integers, with the target element being the 4000th item.
+
+🔹 Experimental Setup
+
+Dataset size: 5000 integers (from large_dataset_5000.txt).
+
+Target element: The 4000th element in the file.
+
+Search function: A simple linear search loop.
+
+Warm-up:
+
+In Java, the JIT compiler was warmed up with 1000 iterations before timing.
+
+In Python, a similar warm-up was performed to reduce initial function-call overhead.
+
+Timing precision:
+
+Java: System.nanoTime() converted to milliseconds (3 decimal places).
+
+Python: time.perf_counter_ns() converted to milliseconds (3 decimal places).
+
+🔹 Results
+Language	Execution Time (ms)	Relative Speed
+Python	0.161 ms	~23× slower
+Java	0.007 ms	Baseline
+🔹 Analysis
+
+Algorithm Complexity
+
+Both implementations perform exactly the same number of comparisons (≈4000).
+
+The theoretical complexity is O(n), identical in both cases.
+
+Language Execution Model
+
+Java:
+
+Runs on the JVM with a Just-In-Time (JIT) compiler.
+
+Hot methods are compiled into optimized machine code.
+
+Loop operations and integer comparisons are heavily optimized.
+
+This explains the extremely fast timing (0.007 ms ≈ 7 µs).
+
+Python (CPython):
+
+Interpreted language without JIT (unless PyPy is used).
+
+Every loop iteration has overhead: type checking, function dispatching, etc.
+
+This results in higher runtime (0.161 ms ≈ 161 µs).
+
+Performance Ratio
+
+Java was roughly 23× faster than Python for this dataset.
+
+This gap is consistent with expectations for tight loops and numeric operations.
+
+Scalability Expectations
+
+With larger datasets, the difference becomes more visible:
+
+At 50,000 elements, Python may take a few ms, while Java remains under 1 ms.
+
+At 5 million elements, Python might take hundreds of ms, while Java stays in the tens of ms.
+
+🔹 Conclusion
+
+Both Python and Java produced correct results for linear search.
+
+Performance Difference:
+
+Python: 0.161 ms
+
+Java: 0.007 ms
+
+Java demonstrated a 23× speed advantage due to JIT compilation and lower loop overhead.
+
+Takeaway:
+
+For algorithm learning and prototyping, Python is sufficient.
+
+For performance-critical applications, Java (or other compiled languages) is significantly more efficient.
+
+🔹 Recommendations
+
+Use Python for quick experimentation, teaching, or smaller datasets.
+
+Use Java (or C/C++) when performance at scale is important.
+
+To improve Python’s speed, consider:
+
+Using PyPy (a JIT-enabled Python interpreter).
+
+Leveraging NumPy (vectorized operations).
+
+For fairness in benchmarking, test with larger datasets (≥1M elements) where timing differences become more apparent in milliseconds.
